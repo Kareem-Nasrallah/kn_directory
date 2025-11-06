@@ -1,13 +1,14 @@
 import { auth, signIn, signOut } from "@/auth";
-import { BadgePlus, LogOut } from "lucide-react";
+import { BadgePlus, LogOut, MoonIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import ThemeButton from "./ThemeButton";
 
 const Navbar = async () => {
   const session = await auth();
   return (
-    <header className="px-5 py-3 bg-white shadow-sm">
+    <header className="px-5 py-3 shadow-sm dark:shadow-foreground">
       <nav className="flex justify-between items-center font-subtitle">
         <Link href="/">
           <Image
@@ -18,7 +19,8 @@ const Navbar = async () => {
             priority
           />
         </Link>
-        <div className="flex items-center gap-3 xs:gap-5 text-black">
+        <div className="flex items-center gap-3 xs:gap-5">
+          <ThemeButton />
           {session && session?.user ? (
             <>
               <Link href="/startup/create">
@@ -31,7 +33,10 @@ const Navbar = async () => {
                   await signOut({ redirectTo: "/" });
                 }}
               >
-                <button type="submit" className="cursor-pointer flex items-center">
+                <button
+                  type="submit"
+                  className="cursor-pointer flex items-center"
+                >
                   <span className="max-sm:hidden">Logout</span>
                   <LogOut className="size-6 sm:hidden text-red-500" />
                 </button>

@@ -66,6 +66,10 @@
 body {
   font-family: var(--font-body), sans-serif;
 }
+.dark {
+  background-color: #080225;
+  color: #eee;
+}
 
 @layer utilities {
   .font-main-title {
@@ -76,32 +80,28 @@ body {
     @apply font-title font-semibold text-2xl;
   }
 
+  .pink_container {
+    @apply w-full bg-primary min-h-[530px] px-5 flex flex-col justify-center items-center;
+  }
+
   .heading-discription {
-    @apply uppercase bg-foreground px-6 py-3 font-title text-background sm:text-[54px] sm:leading-16 text-4xl leading-[46px] max-w-5xl text-center my-5;
+    @apply uppercase bg-black px-6 py-3 font-title text-white sm:text-[54px] sm:leading-16 text-4xl leading-[46px] max-w-5xl text-center my-5;
   }
 
   .sub-heading {
-    @apply text-xl font-title font-normal text-background max-w-2xl text-center wrap-break-word;
+    @apply text-xl font-title font-normal text-white max-w-2xl text-center wrap-break-word;
   }
 
   .no-result {
     @apply text-black-100 text-sm;
   }
 
-  .pink_container {
-    @apply w-full bg-primary min-h-[530px] px-5 flex flex-col justify-center items-center;
-  }
-
   .category-tag {
-    @apply bg-primary-100 px-4 py-2 rounded-full;
+    @apply bg-primary-100 px-4 py-2 rounded-full text-black;
   }
 
   .startup-card_skeleton {
     @apply w-full h-96 rounded-[22px] bg-zinc-400;
-  }
-
-  .startup-form {
-    @apply max-w-2xl mx-auto bg-white my-10 space-y-8 px-6;
   }
 
   .search-btn {
@@ -121,10 +121,11 @@ body {
   }
 
   .tag {
-    @apply bg-secondary px-6 py-3 font-bold rounded-sm uppercase relative;
+    @apply bg-secondary px-6 py-3 font-bold rounded-sm uppercase relative text-black;
   }
 
   /* view */
+
   .view-container {
     @apply flex justify-end items-center mt-5 fixed bottom-3 right-3;
   }
@@ -134,20 +135,25 @@ body {
   }
 
   /* startup-form */
+
+  .startup-form {
+    @apply max-w-2xl mx-auto my-10 space-y-8 px-6;
+  }
+
   .startup-form_label {
-    @apply font-bold uppercase text-lg text-black;
+    @apply font-bold uppercase text-lg;
   }
 
   .startup-form_input {
-    @apply border-[3px] border-black px-5 py-7 text-lg text-black rounded-xl placeholder:text-black-300 font-normal mt-1;
+    @apply border-[3px] border-foreground px-5 py-7 text-lg text-foreground rounded-xl placeholder:text-black-300 dark:placeholder:text-muted-foreground font-normal mt-1;
   }
 
   .startup-form_textarea {
-    @apply border-[3px] border-black p-5 text-lg text-black rounded-xl placeholder:text-black-300 mt-1;
+    @apply border-[3px] border-foreground p-5 text-lg text-foreground rounded-xl placeholder:text-black-300 dark:placeholder:text-muted-foreground mt-1;
   }
 
   .startup-form_select {
-    @apply border-[3px] border-black w-full rounded-full p-5 text-lg text-black placeholder:text-black-300 mt-1;
+    @apply border-[3px] border-foreground w-full rounded-full p-5 text-lg text-foreground placeholder:text-black-300 dark:placeholder:text-muted-foreground mt-1;
   }
 
   .startup-form_error {
@@ -159,7 +165,7 @@ body {
   }
 
   .startup-form_btn {
-    @apply bg-primary border-4 border-black !w-full cursor-pointer rounded-full p-5 min-h-[70px] text-xl font-bold;
+    @apply bg-primary border-4 border-foreground !w-full cursor-pointer rounded-full p-5 min-h-[70px] text-xl font-bold;
   }
 
   /* profile */
@@ -168,11 +174,11 @@ body {
   }
 
   .profile_card {
-    @apply w-full px-6 pb-6 pt-20 flex flex-col justify-center items-center bg-primary border-[5px] border-black shadow-100 rounded-[30px] relative z-10 h-fit lg:w-80;
+    @apply w-full px-6 pb-6 pt-20 flex flex-col justify-center items-center bg-primary border-[5px] border-foreground shadow-100 rounded-[30px] relative z-10 h-fit lg:w-80;
   }
 
   .profile_title {
-    @apply w-11/12 bg-white border-[5px] border-black rounded-[20px] px-5 py-3 absolute -top-9;
+    @apply w-11/12 bg-background border-[5px] border-foreground rounded-[20px] px-5 py-3 absolute -top-9;
   }
 
   .profile_image {
@@ -191,6 +197,9 @@ body {
   border-radius: 20px;
   width: 100%;
   height: 100%;
+}
+.dark .profile_title::after {
+  background: #ddd;
 }
 
 .tag::before,
@@ -289,15 +298,15 @@ body {
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
+  --background: oklch(14.012% 0.0721 283.357);
   --foreground: oklch(0.984 0.003 247.858);
   --card: oklch(62.296% 0.2268 9.334);
   --card-foreground: oklch(0.984 0.003 247.858);
   --popover: oklch(62.296% 0.2268 9.334);
   --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
+  --primary: oklch(62.296% 0.2268 9.334);
   --primary-foreground: oklch(62.296% 0.2268 9.334);
-  --secondary: oklch(0.279 0.041 260.031);
+  --secondary: #fbe843;
   --secondary-foreground: oklch(0.984 0.003 247.858);
   --muted: oklch(0.279 0.041 260.031);
   --muted-foreground: oklch(0.704 0.04 256.788);

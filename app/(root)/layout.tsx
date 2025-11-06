@@ -4,6 +4,7 @@ import "../globals.css";
 import "easymde/dist/easymde.min.css";
 import Navbar from "../../components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "next-themes";
 
 const markaziText = Markazi_Text({
   variable: "--font-title",
@@ -32,8 +33,10 @@ export default function RootLayout({
       <body
         className={`${markaziText.variable} ${almarai.variable} antialiased`}
       >
-        <Navbar />
-        <main>{children}</main>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Navbar />
+          <main>{children}</main>
+        </ThemeProvider>
         <Toaster />
       </body>
     </html>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import {
@@ -11,6 +11,7 @@ import {
   SelectValue,
 } from "./ui/select";
 import dynamic from "next/dynamic";
+import { useTheme } from "next-themes";
 
 const MDEditor = dynamic(() => import("@uiw/react-md-editor"), {
   ssr: false,
@@ -46,6 +47,16 @@ const Field = ({
   placeholder,
   className,
 }: FieldProps) => {
+
+    const { theme } = useTheme();
+  const [editorTheme, setEditorTheme] = useState("light");
+
+  // Sync between next-themes and MDEditor
+  useEffect(() => {
+    if (theme === "dark") setEditorTheme("dark");
+    else setEditorTheme("light");
+  }, [theme]);
+
   const fieldType = () => {
     switch (type) {
       case "inputText":
@@ -53,7 +64,7 @@ const Field = ({
           <Input
             name={name}
             id={name}
-            className="startup-form_input"
+            className="startup-form_input !bg-background"
             placeholder={placeholder}
             type="text"
           />
@@ -63,7 +74,7 @@ const Field = ({
           <Input
             name={name}
             id={name}
-            className="startup-form_input"
+            className="startup-form_input !bg-background"
             placeholder={placeholder}
             type="file"
             accept="image/*"
@@ -100,7 +111,7 @@ const Field = ({
         );
       case "pitch":
         return (
-          <div data-color-mode="light">
+          <div  data-color-mode={editorTheme}>
             {setState && (
               <MDEditor
                 value={pitch}

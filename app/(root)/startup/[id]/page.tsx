@@ -69,7 +69,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
           <h3 className="text-3xl">Pitch Details</h3>
           {parsedContent ? (
             <article
-              className="prose max-w-4xl break-all"
+              className="prose dark:prose-invert max-w-4xl break-all text-foreground"
               dangerouslySetInnerHTML={{ __html: parsedContent }}
             />
           ) : (

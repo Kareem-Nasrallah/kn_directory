@@ -15,7 +15,6 @@ const SearchForm = ({ search }: { search?: string }) => {
       <Input
         name="search"
         defaultValue={search}
-        className=""
         placeholder="Search Startups"
       />
       <div className="flex gap-2 absolute end-3 top-2.5">

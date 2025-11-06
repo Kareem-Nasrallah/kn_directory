@@ -151,7 +151,7 @@ const StartupForm = () => {
             <span>Submitting...</span>
           ) : (
             <>
-              <span>Submit Your Pitch</span>
+              <span className="text-white">Submit Your Pitch</span>
               <Send className="size-6 text-white" />
             </>
           )}
